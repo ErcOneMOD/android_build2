@@ -43,6 +43,31 @@ endif
 # STRICT_ALIASING
 ifeq ($(STRICT_ALIASING),true)
 LOCAL_DISABLE_STRICT := \
+	camera.omap4 \
+	audio.primary.piranha \
+	libtee_client_api_driver \
+	mm-vdec-omx-test \
+	libOmxVenc \
+	libqsap_sdk \
+	lsof \
+	tinyxml \
+	camera.msm8084 \
+	hwcomposer.msm8084 \
+	bionic \
+	libavutil \
+	libavcodec \
+	gatt_testtool \
+	libwnndict \
+	libxml2 \
+	busybox \
+	libbusybox \
+	libfuse \
+	libmtdutils \
+	libstlport_static \
+	libdl \
+	libc_common \
+	stlport \
+	libcrypto_static \
 	libc_bionic \
 	libc_dns \
 	libc_tzcode \
@@ -96,13 +121,23 @@ LOCAL_DISABLE_STRICT := \
 	libc_openbsd \
 	libc \
 	libc_nomalloc \
+libcrypto_static \
+libfuse \
+libbusybox \
+libwnndict \
+gatt_testtool \
+libavcodec \
+lsof \
+libavformat \
 	patchoat \
 	dex2oat \
 	libart \
 	libart-compiler \
 	oatdump \
-	libart-disassembler
+	libart-disassembler \
+	libstagefright_webm
 
+# Force no strict-aliasing on some modules
 LOCAL_FORCE_DISABLE_STRICT := \
 	libziparchive-host \
 	libc_bionic \
@@ -110,7 +145,10 @@ LOCAL_FORCE_DISABLE_STRICT := \
 	libziparchive \
 	libdiskconfig \
 	logd \
-	libjavacore
+	libjavacore \
+	libavcodec \
+	libavformat \
+	libstagefright_webm
 
 ifeq (1,$(words $(filter $(LOCAL_FORCE_DISABLE_STRICT),$(LOCAL_MODULE))))
 ifdef LOCAL_CONLYFLAGS
@@ -169,7 +207,10 @@ LOCAL_FORCE_DISABLE_STRICT := \
 	libziparchive \
 	libdiskconfig \
 	logd \
-	libjavacore
+	libjavacore \
+	libavcodec \
+	libavformat \
+	libstagefright_webm
 
 ifeq (1,$(words $(filter $(LOCAL_FORCE_DISABLE_STRICT),$(LOCAL_MODULE))))
 ifdef LOCAL_CONLYFLAGS
@@ -378,7 +419,9 @@ LOCAL_DISABLE_GRAPHITE := \
 	libwebviewchromium_plat_support \
 	libjni_filtershow_filters \
 	fio \
-	libwebrtc_spl
+	libwebrtc_spl \
+libavcodec \
+libSR_Core
 
 ifneq (1,$(words $(filter $(LOCAL_DISABLE_GRAPHITE), $(LOCAL_MODULE))))
 ifdef LOCAL_CONLYFLAGS
